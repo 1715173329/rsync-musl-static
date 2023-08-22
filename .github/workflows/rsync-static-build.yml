@@ -17,8 +17,8 @@ jobs:
       - name: Install build dependencies
         run: |
           apk add --no-cache curl gcc g++ make
-          apk add --no-cache acl-dev attr-dev lz4-dev lz4-static openssl-dev openssl-libs-static popt-dev popt-static \
-            zlib-dev zlib-static zstd-dev zstd-static
+          apk add --no-cache acl-dev acl-static attr-dev attr-static gnu-libiconv-dev gnu-libiconv-libs \
+            lz4-dev lz4-static openssl-dev openssl-libs-static popt-dev popt-static zlib-dev zlib-static zstd-dev zstd-static
 
       - name: Build static xxHash
         run: |
@@ -34,7 +34,7 @@ jobs:
           tar -zxf "rsync-$RSYNC_VER.tar.gz"
           cd "rsync-$RSYNC_VER"
           CFLAGS="-fPIC -DPIC -flto -O2 -static -I../xxHash-$XXHASH_VER" LDFLAGS="-lpthread -ldl -L../xxHash-$XXHASH_VER" \
-            ./configure --disable-md2man
+            ./configure --disable-md2man --with-included-zlib=no
           make -j"$(nproc)"
           strip rsync
           cp -fp rsync rsync-ssl ..
