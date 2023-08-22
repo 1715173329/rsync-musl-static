@@ -1,0 +1,3 @@
+The static rsync build based on musl libc.
+
+I'm providing it here because I never seem to be able to find a working rsync download when I need it.
