@@ -41,7 +41,7 @@ jobs:
           cd -
 
       - name: Store rsync builds
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: "!startsWith(github.ref, 'refs/tags/v')"
         with:
           name: rsync-musl-static
