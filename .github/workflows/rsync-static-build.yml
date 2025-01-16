@@ -12,7 +12,7 @@ jobs:
     container: alpine:latest
     env:
       XXHASH_VER: "0.8.3"
-      RSYNC_VER: "3.4.0"
+      RSYNC_VER: "3.4.1"
     steps:
       - name: Install build dependencies
         run: |
