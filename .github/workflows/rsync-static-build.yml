@@ -34,7 +34,7 @@ jobs:
           tar -zxf "rsync-$RSYNC_VER.tar.gz"
           cd "rsync-$RSYNC_VER"
           CFLAGS="-fPIC -DPIC -flto -O2 -static -I../xxHash-$XXHASH_VER" LDFLAGS="-lpthread -ldl -L../xxHash-$XXHASH_VER" \
-            ./configure --disable-md2man --with-included-zlib=no
+            ./configure --disable-idn --disable-md2man --with-included-zlib=no
           make -j"$(nproc)"
           strip rsync
           cp -fp rsync rsync-ssl ..
